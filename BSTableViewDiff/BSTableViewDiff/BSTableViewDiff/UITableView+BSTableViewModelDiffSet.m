@@ -17,7 +17,7 @@
         if (diffSet.sectionsToDelete.count > 0) {
             [self deleteSections:diffSet.sectionsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-        if (diffSet.rowsToInsert.count > 0) {
+        if (diffSet.rowsToDelete.count > 0) {
             [self deleteRowsAtIndexPaths:diffSet.rowsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
         }
         if (diffSet.sectionsToInsert) {
