@@ -10,8 +10,15 @@
 
 @class BSTableViewModelDiffSet;
 
+typedef NSString * (^BSTableViewModelSectionNameBlock)(id object);
+
 @interface BSTableViewModel : NSObject
 
-- (BSTableViewModelDiffSet *)diffSetForDataArray:(NSArray *)dataArray withSectionKey:(NSString *)key;
++ (instancetype)tableViewModel;
++ (instancetype)tableViewModelWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block;
+
+- (instancetype)initWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block;
+
+- (BSTableViewModelDiffSet *)diffSetForDataArray:(NSArray *)dataArray;
 
 @end

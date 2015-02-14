@@ -13,19 +13,50 @@
 
 @property (nonatomic, strong) NSDictionary *model;
 @property (nonatomic, strong) NSArray *sections;
+@property (nonatomic, strong) BSTableViewModelSectionNameBlock sectionNameBlock;
 
 @end
 
 @implementation BSTableViewModel
 
-- (BSTableViewModelDiffSet *)diffSetForDataArray:(NSArray *)dataArray withSectionKey:(NSString *)key {
+#pragma mark - convinience constructors
+
++ (instancetype)tableViewModel {
+    return [BSTableViewModel tableViewModelWithSectionNameBlock:nil];
+}
+
++ (instancetype)tableViewModelWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block {
+    return [[BSTableViewModel alloc] initWithSectionNameBlock:block];
+}
+
+#pragma mark - lifecycle
+
+- (instancetype)init {
+    return [self initWithSectionNameBlock:nil];
+}
+
+- (instancetype)initWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block {
+    self = [super init];
+    if (self) {
+        self.sectionNameBlock = block;
+    }
+    return self;
+}
+
+- (void)dealloc {
+    self.sectionNameBlock = nil;
+}
+
+#pragma mark - diffset calculation
+
+- (BSTableViewModelDiffSet *)diffSetForDataArray:(NSArray *)dataArray {
     BSTableViewModelDiffSet *diffset = [BSTableViewModelDiffSet new];
     NSDictionary *oldModel = self.model;
     NSArray *oldSections = self.sections;
     
     if (dataArray) {
-        if (key) {
-            [self groupObjectsInArray:dataArray byKey:key];
+        if (self.sectionNameBlock) {
+            [self groupObjectsInArray:dataArray];
         } else {
             self.model = @{[NSNull null] : dataArray};
             self.sections = @[[NSNull null]];
@@ -86,12 +117,14 @@
 }
 
 #pragma mark - private
-- (void)groupObjectsInArray:(NSArray *)array byKey:(NSString *)key {
+
+- (void)groupObjectsInArray:(NSArray *)array {
     NSMutableDictionary *groupsDict = [NSMutableDictionary new];
     NSMutableArray *sections = [NSMutableArray new];
     
     for (id obj in array) {
-        NSString * groupKey = [obj valueForKey:key];
+        NSString *groupKey = self.sectionNameBlock(obj);
+        NSAssert([groupKey isKindOfClass:[NSString class]], @"Section Name Block must return a NSString Value");
         
         NSMutableArray *groupedArray = [groupsDict valueForKey:groupKey];
         if (!groupedArray) {

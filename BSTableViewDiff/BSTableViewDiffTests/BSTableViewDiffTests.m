@@ -26,8 +26,8 @@
 - (void)testInsertionOfRows {
     NSArray *objects = @[@1,@2,@3,@4];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModel];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 4);
     XCTAssert(diffSet.rowsToDelete.count == 0);
     XCTAssert(diffSet.sectionsToInsert.count == 1);
@@ -41,7 +41,7 @@
     
     //Test insertion of new row on position 1
     objects = @[@1,@5,@2,@3,@4];
-    diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 1);
     XCTAssert(diffSet.rowsToDelete.count == 0);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
@@ -59,8 +59,10 @@
                          @{@"key" : @"section 2"},
                          @{@"key" : @"section 2"}];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+        return [object valueForKey:@"key"];
+    }];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 6);
     XCTAssert(diffSet.sectionsToInsert.count == 3);
     
@@ -79,7 +81,7 @@
                 @{@"key" : @"section 2"},
                 @{@"key" : @"section 2"}];
     
-    diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 2);
     XCTAssert(diffSet.sectionsToInsert.count == 1);
     XCTAssert(diffSet.sectionsToDelete.count == 0);
@@ -90,10 +92,10 @@
 - (void)testDeletionOfRows {
     NSArray *objects = @[@1,@2,@3,@4];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModel];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     objects = @[@1,@2,@4];
-    diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 0);
     XCTAssert(diffSet.rowsToDelete.count == 1);
     XCTAssert(diffSet.sectionsToDelete.count == 0);
@@ -113,8 +115,10 @@
                          @{@"key" : @"section 2"},
                          @{@"key" : @"section 2"}];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+        return [object valueForKey:@"key"];
+    }];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     
     objects = @[@{@"key" : @"section 0"},
                 @{@"key" : @"section 0"},
@@ -123,7 +127,7 @@
                 @{@"key" : @"section 2"},
                 @{@"key" : @"section 2"}];
     
-    diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 0);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
     XCTAssert(diffSet.rowsToDelete.count == 0);
@@ -135,11 +139,11 @@
 - (void)testInsertionAndDeletionMixInSingleSection {
     NSArray *objects = @[@1,@2,@3,@4];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModel];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     
     objects = @[@1,@5,@6,@3,@4];
-    diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 2);
     XCTAssert(diffSet.rowsToDelete.count == 1);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
@@ -155,7 +159,7 @@
     XCTAssert(indexPath.section == 0);
     
     objects = @[@42,@1,@5,@6,@3,@9,@18];
-    diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 3);
     XCTAssert(diffSet.rowsToDelete.count == 1);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
@@ -184,8 +188,10 @@
                          @{@"key" : @"section 2",@"hash": @"31"},
                          @{@"key" : @"section 2",@"hash": @"32"}];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+        return [object valueForKey:@"key"];
+    }];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     
     objects = @[@{@"key" : @"section 0",@"hash": @"01"},
                 @{@"key" : @"section 0",@"hash": @"02"},
@@ -196,7 +202,7 @@
                 @{@"key" : @"section 2",@"hash": @"31"},
                 @{@"key" : @"section 2",@"hash": @"32"}];
     
-    diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 3);
     XCTAssert(diffSet.rowsToDelete.count == 1);
     XCTAssert(diffSet.sectionsToInsert.count == 1);
@@ -207,9 +213,9 @@
     NSArray *objects = @[@1,@2,@3,@4];
     
     BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:nil];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     
-    diffSet =  [tableViewModel diffSetForDataArray:nil withSectionKey:nil];
+    diffSet =  [tableViewModel diffSetForDataArray:nil];
     XCTAssert(diffSet.rowsToInsert.count == 0);
     XCTAssert(diffSet.rowsToDelete.count == 0);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
@@ -225,9 +231,11 @@
                          @{@"key" : @"section 3",@"hash": @"22"},
                          @{@"key" : @"section 2",@"hash": @"31"},
                          @{@"key" : @"section 2",@"hash": @"32"}];
-    BSTableViewModel *tableViewModel = [BSTableViewModel new];
-    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
-    diffSet = [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+        return [object valueForKey:@"key"];
+    }];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
+    diffSet = [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 0);
     XCTAssert(diffSet.rowsToDelete.count == 0);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
