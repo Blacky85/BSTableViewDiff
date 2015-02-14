@@ -10,6 +10,8 @@
 
 @interface BSTableViewModelDiffSet : NSObject
 
+@property (nonatomic, readonly) BOOL hasUpdates;
+
 @property (nonatomic, strong) NSArray *rowsToInsert;
 @property (nonatomic, strong) NSIndexSet *sectionsToInsert;
 @property (nonatomic, strong) NSArray *rowsToDelete;

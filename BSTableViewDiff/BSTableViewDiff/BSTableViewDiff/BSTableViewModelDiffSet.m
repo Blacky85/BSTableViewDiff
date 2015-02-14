@@ -10,4 +10,12 @@
 
 @implementation BSTableViewModelDiffSet
 
+- (BOOL)hasUpdates {
+    if (self.rowsToDelete.count > 0 || self.rowsToInsert.count > 0 ||
+        self.sectionsToDelete.count > 0 || self.rowsToDelete.count > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 @end
