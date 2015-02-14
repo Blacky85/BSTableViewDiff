@@ -216,6 +216,24 @@
     XCTAssert(diffSet.sectionsToDelete.count == 1);
 }
 
+- (void)testRepeatedInsertionOfSameDataset {
+    NSArray *objects = @[@{@"key" : @"section 0",@"hash": @"01"},
+                         @{@"key" : @"section 0",@"hash": @"02"},
+                         @{@"key" : @"section 0.5",@"hash": @"11"},
+                         @{@"key" : @"section 0.5",@"hash": @"13"},
+                         @{@"key" : @"section 3",@"hash": @"21"},
+                         @{@"key" : @"section 3",@"hash": @"22"},
+                         @{@"key" : @"section 2",@"hash": @"31"},
+                         @{@"key" : @"section 2",@"hash": @"32"}];
+    BSTableViewModel *tableViewModel = [BSTableViewModel new];
+    BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    diffSet = [tableViewModel diffSetForDataArray:objects withSectionKey:@"key"];
+    XCTAssert(diffSet.rowsToInsert.count == 0);
+    XCTAssert(diffSet.rowsToDelete.count == 0);
+    XCTAssert(diffSet.sectionsToInsert.count == 0);
+    XCTAssert(diffSet.sectionsToDelete.count == 0);
+}
+
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
