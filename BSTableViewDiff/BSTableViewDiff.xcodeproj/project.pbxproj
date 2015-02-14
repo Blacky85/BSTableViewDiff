@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0646AAAD1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0646AAAC1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m */; };
 		065776DF1A8F67F8003007D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 065776DE1A8F67F8003007D8 /* main.m */; };
 		065776E21A8F67F8003007D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 065776E11A8F67F8003007D8 /* AppDelegate.m */; };
 		065776E51A8F67F8003007D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065776E41A8F67F8003007D8 /* ViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0646AAAB1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+BSTableViewModelDiffSet.h"; path = "BSTableViewDiff/UITableView+BSTableViewModelDiffSet.h"; sourceTree = "<group>"; };
+		0646AAAC1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+BSTableViewModelDiffSet.m"; path = "BSTableViewDiff/UITableView+BSTableViewModelDiffSet.m"; sourceTree = "<group>"; };
 		065776D91A8F67F8003007D8 /* BSTableViewDiff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSTableViewDiff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065776DD1A8F67F8003007D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		065776DE1A8F67F8003007D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				065777041A8F68D8003007D8 /* BSTableViewModel.m */,
 				065777051A8F68D8003007D8 /* BSTableViewModelDiffSet.h */,
 				065777061A8F68D8003007D8 /* BSTableViewModelDiffSet.m */,
+				0646AAAB1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.h */,
+				0646AAAC1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m */,
 			);
 			name = BSTableViewDiff;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0646AAAD1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m in Sources */,
 				065776E51A8F67F8003007D8 /* ViewController.m in Sources */,
 				065776E21A8F67F8003007D8 /* AppDelegate.m in Sources */,
 				065777081A8F68D8003007D8 /* BSTableViewModelDiffSet.m in Sources */,
@@ -434,6 +440,7 @@
 				065776FE1A8F67F8003007D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		065776FF1A8F67F8003007D8 /* Build configuration list for PBXNativeTarget "BSTableViewDiffTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +449,7 @@
 				065777011A8F67F8003007D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
