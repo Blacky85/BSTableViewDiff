@@ -10,15 +10,20 @@
 
 @class BSTableViewModelDiffSet;
 
-typedef NSString * (^BSTableViewModelSectionNameBlock)(id object);
+typedef NSString * (^BSTableViewModelSectionTitleBlock)(id object);
 
 @interface BSTableViewModel : NSObject
 
 + (instancetype)tableViewModel;
-+ (instancetype)tableViewModelWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block;
++ (instancetype)tableViewModelWithSectionTitleBlock:(BSTableViewModelSectionTitleBlock)block;
 
-- (instancetype)initWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block;
+- (instancetype)initWithSectionTitleBlock:(BSTableViewModelSectionTitleBlock)block;
 
 - (BSTableViewModelDiffSet *)diffSetForDataArray:(NSArray *)dataArray;
+
+- (NSUInteger)numberOfSections;
+- (NSUInteger)numberOfRowsInSection:(NSUInteger)section;
+- (NSString *)titleForSection:(NSUInteger)section;
+- (id)objectForIndexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -59,7 +59,7 @@
                          @{@"key" : @"section 2"},
                          @{@"key" : @"section 2"}];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(id object) {
         return [object valueForKey:@"key"];
     }];
     BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
@@ -115,7 +115,7 @@
                          @{@"key" : @"section 2"},
                          @{@"key" : @"section 2"}];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(id object) {
         return [object valueForKey:@"key"];
     }];
     BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
@@ -188,7 +188,7 @@
                          @{@"key" : @"section 2",@"hash": @"31"},
                          @{@"key" : @"section 2",@"hash": @"32"}];
     
-    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(id object) {
         return [object valueForKey:@"key"];
     }];
     BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
@@ -231,7 +231,7 @@
                          @{@"key" : @"section 3",@"hash": @"22"},
                          @{@"key" : @"section 2",@"hash": @"31"},
                          @{@"key" : @"section 2",@"hash": @"32"}];
-    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionNameBlock:^NSString *(id object) {
+    BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(id object) {
         return [object valueForKey:@"key"];
     }];
     BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];

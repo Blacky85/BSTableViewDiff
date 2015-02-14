@@ -8,12 +8,13 @@
 
 #import "BSTableViewModel.h"
 #import "BSTableViewModelDiffSet.h"
+#import <UIKit/UIKit.h>
 
 @interface BSTableViewModel()
 
 @property (nonatomic, strong) NSDictionary *model;
 @property (nonatomic, strong) NSArray *sections;
-@property (nonatomic, strong) BSTableViewModelSectionNameBlock sectionNameBlock;
+@property (nonatomic, strong) BSTableViewModelSectionTitleBlock sectionNameBlock;
 
 @end
 
@@ -22,20 +23,20 @@
 #pragma mark - convinience constructors
 
 + (instancetype)tableViewModel {
-    return [BSTableViewModel tableViewModelWithSectionNameBlock:nil];
+    return [BSTableViewModel tableViewModelWithSectionTitleBlock:nil];
 }
 
-+ (instancetype)tableViewModelWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block {
-    return [[BSTableViewModel alloc] initWithSectionNameBlock:block];
++ (instancetype)tableViewModelWithSectionTitleBlock:(BSTableViewModelSectionTitleBlock)block {
+    return [[BSTableViewModel alloc] initWithSectionTitleBlock:block];
 }
 
 #pragma mark - lifecycle
 
 - (instancetype)init {
-    return [self initWithSectionNameBlock:nil];
+    return [self initWithSectionTitleBlock:nil];
 }
 
-- (instancetype)initWithSectionNameBlock:(BSTableViewModelSectionNameBlock)block {
+- (instancetype)initWithSectionTitleBlock:(BSTableViewModelSectionTitleBlock)block {
     self = [super init];
     if (self) {
         self.sectionNameBlock = block;
@@ -45,6 +46,27 @@
 
 - (void)dealloc {
     self.sectionNameBlock = nil;
+}
+
+#pragma mark - data access
+
+- (NSUInteger)numberOfSections {
+    return self.sections.count;
+}
+
+- (NSUInteger)numberOfRowsInSection:(NSUInteger)section {
+    NSString *sectionName = [self titleForSection:section];
+    return [self.model[sectionName] count];
+}
+
+- (NSString *)titleForSection:(NSUInteger)section {
+    return self.sections[section];
+}
+
+- (id)objectForIndexPath:(NSIndexPath *)indexPath {
+    NSString *sectionName = [self titleForSection:indexPath.section];
+    NSArray *objects = self.model[sectionName];
+    return objects[indexPath.row];
 }
 
 #pragma mark - diffset calculation
