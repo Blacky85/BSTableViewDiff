@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0646AAAD1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0646AAAC1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m */; };
+		0646AAB01A8FAB7900E61213 /* ExampleModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0646AAAF1A8FAB7900E61213 /* ExampleModelObject.m */; };
 		065776DF1A8F67F8003007D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 065776DE1A8F67F8003007D8 /* main.m */; };
 		065776E21A8F67F8003007D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 065776E11A8F67F8003007D8 /* AppDelegate.m */; };
 		065776E51A8F67F8003007D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065776E41A8F67F8003007D8 /* ViewController.m */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		0646AAAB1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+BSTableViewModelDiffSet.h"; path = "BSTableViewDiff/UITableView+BSTableViewModelDiffSet.h"; sourceTree = "<group>"; };
 		0646AAAC1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+BSTableViewModelDiffSet.m"; path = "BSTableViewDiff/UITableView+BSTableViewModelDiffSet.m"; sourceTree = "<group>"; };
+		0646AAAE1A8FAB7900E61213 /* ExampleModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleModelObject.h; sourceTree = "<group>"; };
+		0646AAAF1A8FAB7900E61213 /* ExampleModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleModelObject.m; sourceTree = "<group>"; };
 		065776D91A8F67F8003007D8 /* BSTableViewDiff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSTableViewDiff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		065776DD1A8F67F8003007D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		065776DE1A8F67F8003007D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 				065776E61A8F67F8003007D8 /* Main.storyboard */,
 				065776E91A8F67F8003007D8 /* Images.xcassets */,
 				065776EB1A8F67F8003007D8 /* LaunchScreen.xib */,
+				0646AAAE1A8FAB7900E61213 /* ExampleModelObject.h */,
+				0646AAAF1A8FAB7900E61213 /* ExampleModelObject.m */,
 				065776DC1A8F67F8003007D8 /* Supporting Files */,
 			);
 			path = BSTableViewDiff;
@@ -245,6 +250,7 @@
 				0646AAAD1A8F98C900E61213 /* UITableView+BSTableViewModelDiffSet.m in Sources */,
 				065776E51A8F67F8003007D8 /* ViewController.m in Sources */,
 				065776E21A8F67F8003007D8 /* AppDelegate.m in Sources */,
+				0646AAB01A8FAB7900E61213 /* ExampleModelObject.m in Sources */,
 				065777081A8F68D8003007D8 /* BSTableViewModelDiffSet.m in Sources */,
 				065777071A8F68D8003007D8 /* BSTableViewModel.m in Sources */,
 				065776DF1A8F67F8003007D8 /* main.m in Sources */,

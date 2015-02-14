@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "BSTableViewDiff/BSTableViewModel.h"
 #import "BSTableViewDiff/UITableView+BSTableViewModelDiffSet.h"
+#import "ExampleModelObject.h"
 
 @interface ViewController ()
 
@@ -23,14 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(id object) {
-        return [object valueForKey:@"key"];
+    self.tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(ExampleModelObject *object) {
+        return object.section;
     }];
     [self setupDataSets];
 }
 
-#pragma mark - target/action 
+#pragma mark - target/action
 
 - (void)btnPressed:(UIButton *)btn {
     [self selectDataSet:btn.tag];
@@ -48,8 +50,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    id obj = [self.tableViewModel objectForIndexPath:indexPath];
-    cell.textLabel.text = [obj valueForKey:@"hash"];
+    ExampleModelObject *obj = [self.tableViewModel objectForIndexPath:indexPath];
+    cell.textLabel.text = obj.name;
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = obj.color;
     return cell;
 }
 
@@ -66,22 +70,28 @@
 }
 
 - (void)setupDataSets {
-    NSArray *objects0 = @[@{@"key" : @"section 0",@"hash": @"01"},
-                         @{@"key" : @"section 0",@"hash": @"02"},
-                         @{@"key" : @"section 0.5",@"hash": @"11"},
-                         @{@"key" : @"section 0.5",@"hash": @"12"},
-                         @{@"key" : @"section 1",@"hash": @"21"},
-                         @{@"key" : @"section 1",@"hash": @"22"},
-                         @{@"key" : @"section 2",@"hash": @"31"},
-                         @{@"key" : @"section 2",@"hash": @"32"}];
+    NSArray *objects0 = @[[ExampleModelObject modelWithSection:@"section 1" name:@"AAA"],
+                          [ExampleModelObject modelWithSection:@"section 2" name:@"BBB"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"CCC"],
+                          [ExampleModelObject modelWithSection:@"section 4" name:@"DDD"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"EEE"],
+                          [ExampleModelObject modelWithSection:@"section 3" name:@"FFF"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"HHH"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"JJJ"]];
     
-    NSArray *objects1 = @[@{@"key" : @"section 0",@"hash": @"02"},
-                         @{@"key" : @"section 0.5",@"hash": @"13"},
-                         @{@"key" : @"section 0.5",@"hash": @"12"},
-                         @{@"key" : @"section 1",@"hash": @"21"},
-                         @{@"key" : @"section 2",@"hash": @"24"},
-                         @{@"key" : @"section 2",@"hash": @"31"},
-                         @{@"key" : @"section 2",@"hash": @"32"}];
+    objects0 = [objects0 sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    
+    NSArray *objects1 = @[[ExampleModelObject modelWithSection:@"section 1" name:@"000"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"AAA"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"GGG"],
+                          [ExampleModelObject modelWithSection:@"section 3" name:@"ZZZ"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"CCC"],
+                          [ExampleModelObject modelWithSection:@"section 4" name:@"DDD"],
+                          [ExampleModelObject modelWithSection:@"section 3" name:@"FFF"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"HHH"],
+                          [ExampleModelObject modelWithSection:@"section 1" name:@"JJJ"]];
+    
+    objects1 = [objects1 sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
     
     self.dataSets = @[objects0,objects1];
     
