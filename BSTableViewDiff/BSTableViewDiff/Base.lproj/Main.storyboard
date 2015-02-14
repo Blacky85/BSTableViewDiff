@@ -42,16 +42,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="nNN-r0-0Li"/>
                                 </connections>
                             </tableView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a45-9W-gkA">
+                                <rect key="frame" x="0.0" y="520" width="600" height="80"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ntp-Ac-bce" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2xA-RQ-QtS"/>
+                            <constraint firstItem="a45-9W-gkA" firstAttribute="top" secondItem="ntp-Ac-bce" secondAttribute="bottom" id="FeP-qb-umY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ntp-Ac-bce" secondAttribute="trailing" constant="-16" id="MIB-8f-Sjq"/>
                             <constraint firstItem="ntp-Ac-bce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Ov6-Cg-zhW"/>
+                            <constraint firstItem="a45-9W-gkA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ViE-8B-kpb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a45-9W-gkA" secondAttribute="bottom" id="Y2C-vm-6EM"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ntp-Ac-bce" secondAttribute="bottom" constant="80" id="cgb-bf-ifb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="a45-9W-gkA" secondAttribute="trailing" constant="-16" id="gEo-S5-ehX"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="selectionButtonsScrollview" destination="a45-9W-gkA" id="DTK-Qr-x7v"/>
                         <outlet property="tableView" destination="ntp-Ac-bce" id="S6H-cz-rd6"/>
                     </connections>
                 </viewController>
