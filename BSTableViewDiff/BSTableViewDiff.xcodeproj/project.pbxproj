@@ -14,6 +14,8 @@
 		065776EA1A8F67F8003007D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 065776E91A8F67F8003007D8 /* Images.xcassets */; };
 		065776ED1A8F67F8003007D8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 065776EB1A8F67F8003007D8 /* LaunchScreen.xib */; };
 		065776F91A8F67F8003007D8 /* BSTableViewDiffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 065776F81A8F67F8003007D8 /* BSTableViewDiffTests.m */; };
+		065777071A8F68D8003007D8 /* BSTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 065777041A8F68D8003007D8 /* BSTableViewModel.m */; };
+		065777081A8F68D8003007D8 /* BSTableViewModelDiffSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 065777061A8F68D8003007D8 /* BSTableViewModelDiffSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		065776F21A8F67F8003007D8 /* BSTableViewDiffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BSTableViewDiffTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		065776F71A8F67F8003007D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		065776F81A8F67F8003007D8 /* BSTableViewDiffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSTableViewDiffTests.m; sourceTree = "<group>"; };
+		065777031A8F68D8003007D8 /* BSTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSTableViewModel.h; path = BSTableViewDiff/BSTableViewModel.h; sourceTree = "<group>"; };
+		065777041A8F68D8003007D8 /* BSTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSTableViewModel.m; path = BSTableViewDiff/BSTableViewModel.m; sourceTree = "<group>"; };
+		065777051A8F68D8003007D8 /* BSTableViewModelDiffSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSTableViewModelDiffSet.h; path = BSTableViewDiff/BSTableViewModelDiffSet.h; sourceTree = "<group>"; };
+		065777061A8F68D8003007D8 /* BSTableViewModelDiffSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSTableViewModelDiffSet.m; path = BSTableViewDiff/BSTableViewModelDiffSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		065776DB1A8F67F8003007D8 /* BSTableViewDiff */ = {
 			isa = PBXGroup;
 			children = (
+				065777021A8F6846003007D8 /* BSTableViewDiff */,
 				065776E01A8F67F8003007D8 /* AppDelegate.h */,
 				065776E11A8F67F8003007D8 /* AppDelegate.m */,
 				065776E31A8F67F8003007D8 /* ViewController.h */,
@@ -117,6 +124,17 @@
 				065776F71A8F67F8003007D8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		065777021A8F6846003007D8 /* BSTableViewDiff */ = {
+			isa = PBXGroup;
+			children = (
+				065777031A8F68D8003007D8 /* BSTableViewModel.h */,
+				065777041A8F68D8003007D8 /* BSTableViewModel.m */,
+				065777051A8F68D8003007D8 /* BSTableViewModelDiffSet.h */,
+				065777061A8F68D8003007D8 /* BSTableViewModelDiffSet.m */,
+			);
+			name = BSTableViewDiff;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +239,8 @@
 			files = (
 				065776E51A8F67F8003007D8 /* ViewController.m in Sources */,
 				065776E21A8F67F8003007D8 /* AppDelegate.m in Sources */,
+				065777081A8F68D8003007D8 /* BSTableViewModelDiffSet.m in Sources */,
+				065777071A8F68D8003007D8 /* BSTableViewModel.m in Sources */,
 				065776DF1A8F67F8003007D8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
