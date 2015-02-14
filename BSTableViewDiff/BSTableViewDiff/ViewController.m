@@ -93,7 +93,11 @@
     
     objects1 = [objects1 sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
     
-    self.dataSets = @[objects0,objects1];
+    NSArray *objects2 = @[[ExampleModelObject modelWithSection:@"section 3" name:@"ZZZ"]];
+    
+    objects2 = [objects2 sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    
+    self.dataSets = @[objects0,objects1,objects2];
     
     self.selectionButtonsScrollview.pagingEnabled = YES;
     
@@ -101,13 +105,15 @@
     CGFloat height = self.selectionButtonsScrollview.frame.size.height;
     for (NSUInteger btnNumber = 0; btnNumber < self.dataSets.count; btnNumber++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(width * btnNumber, 0.f, width, height);
+        btn.frame = CGRectMake((width * btnNumber)/ 3.f, 0.f, width / 3.f, height);
+        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [btn setTitle:[NSString stringWithFormat:@"Dataset Number: %zd",btnNumber]forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        btn.titleLabel.numberOfLines = 2;
         btn.tag = btnNumber;
         [self.selectionButtonsScrollview addSubview:btn];
         [btn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
-        self.selectionButtonsScrollview.contentSize = CGSizeMake((btnNumber + 1) * width, height);
+        self.selectionButtonsScrollview.contentSize = CGSizeMake((btnNumber + 1) * width / 3.f, height);
     }
     
     [self selectDataSet:0];
