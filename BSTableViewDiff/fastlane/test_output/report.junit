@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites tests='8' failures='0'>
+  <testsuite name='BSTableViewDiffTests' tests='8' failures='0'>
+    <testcase classname='BSTableViewDiffTests' name='testDeletionOfRows' time='0.003'/>
+    <testcase classname='BSTableViewDiffTests' name='testDeletionOfSections' time='0.001'/>
+    <testcase classname='BSTableViewDiffTests' name='testEmptyingOfTable' time='0.001'/>
+    <testcase classname='BSTableViewDiffTests' name='testInsertionAndDeletionMixInSeveralSections' time='0.001'/>
+    <testcase classname='BSTableViewDiffTests' name='testInsertionAndDeletionMixInSingleSection' time='0.001'/>
+    <testcase classname='BSTableViewDiffTests' name='testInsertionOfRows' time='0.001'/>
+    <testcase classname='BSTableViewDiffTests' name='testInsertionOfSections' time='0.001'/>
+    <testcase classname='BSTableViewDiffTests' name='testRepeatedInsertionOfSameDataset' time='0.001'/>
+  </testsuite>
+</testsuites>
