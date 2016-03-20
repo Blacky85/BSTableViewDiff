@@ -109,7 +109,6 @@
 
 - (void)testDeletionOfRows {
     NSArray *objects = @[@1,@2,@3,@4];
-    
     BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModel];
     BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     objects = @[@1,@2,@4];
