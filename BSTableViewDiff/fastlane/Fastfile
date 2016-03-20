@@ -70,15 +70,6 @@ platform :ios do
   end
 end
 
-def ios_tests
-  begin
-    sh "cd .. && xctool test"
-  rescue => ex
-    puts ex
-    raise "iOS Unit Tests failed:\n\n #{ex.to_s}"
-  end
-end
-
 
 
 # More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/docs/Platforms.md
