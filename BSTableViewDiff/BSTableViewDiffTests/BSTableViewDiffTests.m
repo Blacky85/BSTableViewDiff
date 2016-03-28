@@ -70,6 +70,7 @@
 }
 
 - (void)testInsertionOfSections {
+    
     NSArray *objects = @[@{@"key" : @"section 0"},
                          @{@"key" : @"section 0"},
                          @{@"key" : @"section 1"},
