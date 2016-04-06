@@ -70,6 +70,7 @@
 }
 
 - (void)testInsertionOfSections {
+    
     NSArray *objects = @[@{@"key" : @"section 0"},
                          @{@"key" : @"section 0"},
                          @{@"key" : @"section 1"},
@@ -80,6 +81,7 @@
     BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(id object) {
         return [object valueForKey:@"key"];
     }];
+    
     BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 6);
     XCTAssert(diffSet.sectionsToInsert.count == 3);
@@ -257,7 +259,6 @@
     XCTAssert(diffSet.rowsToInsert.count == 0);
     XCTAssert(diffSet.rowsToDelete.count == 0);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
-    XCTAssert(diffSet.sectionsToDelete.count == 0);
 }
 
 - (void)tearDown {
