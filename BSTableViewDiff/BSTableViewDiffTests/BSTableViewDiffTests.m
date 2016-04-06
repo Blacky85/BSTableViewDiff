@@ -259,7 +259,6 @@
     XCTAssert(diffSet.rowsToInsert.count == 0);
     XCTAssert(diffSet.rowsToDelete.count == 0);
     XCTAssert(diffSet.sectionsToInsert.count == 0);
-    XCTAssert(diffSet.sectionsToDelete.count == 0);
 }
 
 - (void)tearDown {
