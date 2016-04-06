@@ -81,6 +81,7 @@
     BSTableViewModel *tableViewModel = [BSTableViewModel tableViewModelWithSectionTitleBlock:^NSString *(id object) {
         return [object valueForKey:@"key"];
     }];
+    
     BSTableViewModelDiffSet *diffSet =  [tableViewModel diffSetForDataArray:objects];
     XCTAssert(diffSet.rowsToInsert.count == 6);
     XCTAssert(diffSet.sectionsToInsert.count == 3);
